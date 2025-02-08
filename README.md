@@ -14,7 +14,7 @@ A **Spotify clone** built with **React (Frontend)** and **Node.js (Backend)** th
 🔹 Custom recommendation algorithm  
 
 ## 🛠️ Technologies  
-- **Frontend:** React, Vite, TailwindCSS  
+- **Frontend:** React, Vite, React-BootStrap  
 - **Backend:** Node.js, Express  
 - **Authentication:** OAuth 2.0 (Spotify API)  
 
@@ -28,7 +28,7 @@ cd spotify-clone
 
 ### 2️⃣ Set up the backend  
 ```bash
-cd backend  
+cd back  
 npm install  
 ```
 Create a `.env` file inside the **backend** folder with:  
@@ -37,14 +37,10 @@ SPOTIFY_CLIENT_ID=your_client_id
 SPOTIFY_CLIENT_SECRET=your_client_secret  
 REDIRECT_URI=http://localhost:3000/callback  
 ```
-Start the server:  
-```bash
-npm start  
-```
 
 ### 3️⃣ Set up the frontend  
 ```bash
-cd ../frontend  
+cd ../client  
 npm install  
 npm run dev  
 ```
