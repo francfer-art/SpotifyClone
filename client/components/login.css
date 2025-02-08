@@ -18,3 +18,26 @@
   font-size: 1.5rem;
   padding: 10px 30px;
 }
+
+.searchbar {
+  background-color: black !important;  
+  padding: 1rem !important;
+  color: white !important;  
+  font-weight: bold !important;
+}
+
+.searchbar::placeholder {
+  color: gray !important;  
+  opacity: 1 !important;  
+}
+
+.track {
+  border: 2px solid green;
+
+  &:hover {
+    background-color: green;
+    color: white;
+  }
+  cursor: pointer;
+}
+
