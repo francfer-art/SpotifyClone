@@ -20,6 +20,18 @@ export const Dashboard = ({ code }) => {
   const [playingTrack, setPlayingTrack] = useState();
 
 
+  // useEffect(() => {
+  //   const fetchAccessToken = async () => {
+  //     const token = await useAuth(code);
+  //     if (token) {
+  //       setAccessToken(token);
+  //     } else {
+  //       console.error("Error al obtener el access token");
+  //     }
+  //   };
+
+  //   fetchAccessToken();
+  // }, [code]);
   const chooseTrack = (track) => {
     setPlayingTrack(track);
     setSearch('');
@@ -38,6 +50,8 @@ export const Dashboard = ({ code }) => {
 
     spotifyApi.searchTracks(search).then(res => {
       if (cancel) return;
+      console.log(res.body);
+      
       setSearchResults(res.body.tracks.items.map(track => {
         
         const smallestImg = track.album.images.reduce((smallest, current) => {
@@ -46,6 +60,7 @@ export const Dashboard = ({ code }) => {
         },track.album.images[0]);
 
         return{
+          trackId: track.id,
           artist: track.artists[0].name,
           title: track.name,
           uri: track.uri,
@@ -57,6 +72,8 @@ export const Dashboard = ({ code }) => {
     return () => cancel = true;
   }, [search, accessToken])
 
+
+  if (!accessToken) return <div>Loading...</div>
   return (
     <Container
       className="d-flex flex-column py-2"
@@ -77,7 +94,7 @@ export const Dashboard = ({ code }) => {
         })}
       </div>
       <div>
-        <Player accessToken={accessToken} trackUri={playingTrack?.uri}/>
+        <Player accessToken={accessToken} trackId={playingTrack?.trackId}/>
       </div>
     </Container>
   );
